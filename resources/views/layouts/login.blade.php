@@ -23,8 +23,8 @@
     <header>
         <div id = "head">
         <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
-            <div id="">
-                <div id="">
+            <div id="head-menu">
+                <div id="head-person">
                     <p>〇〇さん<img src="images/arrow.png"></p>
                 <div>
                 <ul>
