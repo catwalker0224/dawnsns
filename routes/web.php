@@ -30,6 +30,10 @@ Route::get('/added', 'Auth\RegisterController@added');
 
 
 //ログイン中のページ
+Route::group(['middleware' => 'auth'], function () {
+  Route::get('/top','LoginController@login');
+});
+
 Route::get('/top','PostsController@index');
 
 Route::get('/profile','UsersController@profile');
@@ -38,6 +42,3 @@ Route::get('/search','UsersController@index');
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
-
-
-
