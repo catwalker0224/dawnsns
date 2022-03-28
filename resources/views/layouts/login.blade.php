@@ -25,7 +25,11 @@
         <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
             <div id="head-menu">
                 <div id="head-person">
-                    <p>〇〇さん<img src="images/dawn.png"></p>
+                    <p>〇〇さん</p>
+                    <div id="accordion">
+
+                    </div>
+                    <p><img src="images/dawn.png"></p>
                 <div>
                 <ul>
                     <li><a href="/top">ホーム</a></li>
