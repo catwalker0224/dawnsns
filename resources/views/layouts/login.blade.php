@@ -25,7 +25,7 @@
         <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
             <div id="head-menu">
                 <div id="head-person">
-                    <p>〇〇さん</p>
+                    <p>{{Auth::user()->username}}さん</p>
                     <div id="accordion">
 
                     </div>
