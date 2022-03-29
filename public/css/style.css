@@ -8,6 +8,25 @@ header{
     background:#3C4767;
 }
 
+/* アコーディオンメニュー */
+/* 矢印ボタン */
+#accordion-menu span:nth-child(1){
+    top:6px;
+}
+#accordion-menu span:nth-child(2){
+    top:18px;
+}
+
+/* 矢印回転 */
+#accordion-menu.active span:nth-child(1){
+    top: 18px;
+    transform: rorate(-45deg);
+}
+#accordion-menu.active span:nth-child(2){
+    top: 18px;
+    transform: rorate(45deg);
+}
+
 /* main content */
 #row{
     display: flex;

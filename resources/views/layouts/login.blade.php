@@ -26,8 +26,9 @@
             <div id="head-menu">
                 <div id="head-person">
                     <p>{{Auth::user()->username}}さん</p>
-                    <div id="accordion">
-
+                    <div id="accordion-menu">
+                        <span></span>
+                        <span></span>
                     </div>
                     <p><img src="images/dawn.png"></p>
                 <div>
