@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+.login-form {
+  position: absolute;
+  display: block;
+  text-align: center;
+  padding: 30px 30px 0px 30px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 246px;
+  height: 280px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 2%;
+}
+
+.welcome-message {
+  color: #fff;
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
+.label-mailadress {
+  color: #fff;
+  font-size: 0.8rem;
+  margin: 0px 0px 7px 12px;
+  text-align: left;
+}
+
+.label-password {
+  color: #fff;
+  font-size: 0.8rem;
+  margin: 20px 7px 7px 12px;
+  text-align: left;
+}
+
+.input {
+  width: 90%;
+  border-radius: 2%;
+}
+
+.login-btn {
+  text-align: right;
+}
+
+.login-btn input {
+  width: 80px;
+  margin-top: 20px;
+  color: #fff;
+  background-color: #5863A2;
+  border-radius: 2%;
+}
+
+.register-link {
+  margin-top: 35px;
+}
+
+.register-link a {
+  color: #fff;
+  font-size: 0.7rem;
+}

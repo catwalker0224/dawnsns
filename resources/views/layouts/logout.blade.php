@@ -20,10 +20,10 @@
     <!--OGPタグ/twitterカード-->
 </head>
 <body>
-    <header>
+    <div class="header">
         <h1><img src="images/main_logo.png"></h1>
-        <p>Social Network Service</p>
-    </header>
+        <p class="subtitle">Social Network Service</p>
+    </div>
     <div id="container">
         @yield('content')
     </div >
