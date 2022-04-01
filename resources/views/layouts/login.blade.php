@@ -18,21 +18,21 @@
     <!--iphoneのアプリアイコン指定-->
     <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     <!--OGPタグ/twitterカード-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="./js/script.js"></script>
 </head>
 <body>
     <header>
       <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
-      <p class="username">{{Auth::user()->username}}さん</p>
+      <p class="username">{{Auth::user()->username}} さん</p>
+      <span id="accordion-arrow"></span>
       <div id="accordion-menu">
-          <span></span>
-          <span></span>
-      </div>
-      <div id="">
           <ul>
               <li><a href="/top">HOME</a></li>
               <li><a href="/profile">プロフィール編集</a></li>
               <li><a href="/logout">ログアウト</a></li>
           </ul>
+      </div>
       </div>
       <p class="user-icon"><img src="images/dawn.png"></p>
       </div>
