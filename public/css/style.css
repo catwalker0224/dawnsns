@@ -1,41 +1,87 @@
 @charset "utf-8";
-html{
-}
-body{
-}
+
+html {}
+
+body {}
+
 /* header */
-header{
-    background:#3C4767;
+header {
+    background: #3C4767;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    /* justify-content: space-around; */
+}
+
+h1 img {
+    width: 150px;
+    height: auto;
+    margin-left: 50px;
+}
+
+.username {
+    color: #fff;
+    position: absolute;
+    margin-left: 900px;
+    top: 40%;
+}
+
+.user-icon {
+    position: absolute;
+    margin-left: 1050px;
+    top: 20%;
 }
 
 /* アコーディオンメニュー */
-/* 矢印ボタン */
-#accordion-menu span:nth-child(1){
-    top:6px;
+#accordion-menu {
+    position: absolute;
+    margin-left: 1000px;
+    top: 40%;
+    width: 30px;
+    cursor: pointer;
 }
-#accordion-menu span:nth-child(2){
-    top:18px;
+
+#accordion-arrow span {
+    display: block;
+    position: absolute;
+    width: 30px;
+    border-bottom: solid 3px #fff;
+    border-radius: 3px;
+    transform: rotate(-45deg);
+    transition: .35s ease-in-out;
+}
+
+/* 矢印ボタン */
+#accordion-arrow span:nth-child(1) {
+    top: 6px;
+}
+
+#accordion-arrow span:nth-child(2) {
+    top: 18px;
 }
 
 /* 矢印回転 */
-#accordion-menu.active span:nth-child(1){
+#accordion-arrow.active span:nth-child(1) {
     top: 18px;
-    transform: rorate(-45deg);
+    transform: rotate(-45deg);
 }
-#accordion-menu.active span:nth-child(2){
+
+#accordion-arrow.active span:nth-child(2) {
     top: 18px;
-    transform: rorate(45deg);
+    transform: rotate(45deg);
 }
 
 /* main content */
-#row{
+#row {
     display: flex;
     flex-flow: row wrap;
 }
-#container{
+
+#container {
     flex: 0 0 80%;
 }
-#side-bar{
+
+#side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #6C6C6C;
 }

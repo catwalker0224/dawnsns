@@ -21,24 +21,21 @@
 </head>
 <body>
     <header>
-        <div id = "head">
-        <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
-            <div id="head-menu">
-                <div id="head-person">
-                    <p>{{Auth::user()->username}}さん</p>
-                    <div id="accordion-menu">
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <p><img src="images/dawn.png"></p>
-                <div>
-                <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
-                </ul>
-            </div>
-        </div>
+      <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
+      <p class="username">{{Auth::user()->username}}さん</p>
+      <div id="accordion-menu">
+          <span></span>
+          <span></span>
+      </div>
+      <div id="">
+          <ul>
+              <li><a href="/top">HOME</a></li>
+              <li><a href="/profile">プロフィール編集</a></li>
+              <li><a href="/logout">ログアウト</a></li>
+          </ul>
+      </div>
+      <p class="user-icon"><img src="images/dawn.png"></p>
+      </div>
     </header>
     <div id="row">
         <div id="container">
