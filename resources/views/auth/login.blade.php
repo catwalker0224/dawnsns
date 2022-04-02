@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/login.css">
 
+<div class="login-container">
 <div class="login-form">
 <p class="welcome-message">DAWNのSNSへようこそ</p>
 <div class="label-mailadress">
@@ -24,6 +25,7 @@
 {{ Form::submit('LOGIN') }}
 </div>
 <p class="register-link"><a href="/register">新規ユーザーの方はこちら</a></p>
+</div>
 </div>
 {!! Form::close() !!}
 
