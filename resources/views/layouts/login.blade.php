@@ -42,25 +42,19 @@
             @yield('content')
         </div >
         <div id="side-bar">
-            <div id="confirm">
-                <p>{{Auth::user()->username}}さんの</p>
-                <div>
-                <p>フォロー数</p>
-                <p>〇〇名</p>
-                </div>
-                <p class="btn"><a href="">フォローリスト</a></p>
-                <div>
-                <p>フォロワー数</p>
-                <p>〇〇名</p>
-                </div>
-                <p class="btn"><a href="">フォロワーリスト</a></p>
-            </div>
-            <p class="btn"><a href="">ユーザー検索</a></p>
+                <p class="username">{{Auth::user()->username}}さんの</p>
+                <p class="follow">フォロー数</p>
+                <p class="follow-number">〇〇名</p>
+                <p class="followList-btn"><a href="/follow-list">フォローリスト</a></p>
+                <p class="follower">フォロワー数</p>
+                <p class="follower-number">〇〇名</p>
+                <p class="followerList-btn"><a href="/follower-list">フォロワーリスト</a></p>
+                <p class="search-btn"><a href="/search">ユーザー検索</a></p>
         </div>
     </div>
     <footer>
     </footer>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

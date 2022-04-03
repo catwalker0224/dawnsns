@@ -40,7 +40,9 @@ Route::get('/logout','UsersController@logout');
 
 Route::get('/profile','UsersController@profile');
 
-Route::get('/search','UsersController@index');
+Route::get('/search','UsersController@search');
 
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
+Route::get('/follow-list','PostsController@followList');
+Route::get('/follower-list','PostsController@followerList');
+
+Route::post('post/index', 'PostsController@tweet');

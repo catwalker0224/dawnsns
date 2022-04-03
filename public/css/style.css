@@ -1,9 +1,3 @@
-@charset "utf-8";
-
-html {}
-
-body {}
-
 a:hover {
     transition: 0.3s;
 }
@@ -125,8 +119,140 @@ h1 img {
     flex: 0 0 80%;
 }
 
+/* 投稿編集部分 */
+.tweet-form {
+    position: relative;
+    border-bottom: 7px solid #D7D7D7;
+    height: 85px;
+    width: auto;
+}
+
+.tweet-form .user-icon img {
+    position: absolute;
+    left: 15px;
+    top: 25px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.tweet-form .tweet-text {
+    position: absolute;
+    color: #E1E1E1;
+    left: 70px;
+    top: 20px;
+}
+
+.tweet-form .tweet-text input.form-control {
+    border: #fff;
+    width: 500px;
+    height: 60px;
+}
+
+.tweet-form .tweet-text input.form-control::placeholder {
+    position: absolute;
+    padding-top: -50px;
+}
+
+.tweet-form button {
+    position: absolute;
+    right: 15%;
+    bottom: 10px;
+    width: 41px;
+    height: 36px;
+    cursor: pointer;
+}
+
+.tweet-form button img {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 41px;
+    height: 36px;
+}
+
 /* サイドバー */
 #side-bar {
+    position: relative;
     flex: 0 0 19%;
     border-left: 1px solid #6C6C6C;
+    font-size: 0.8rem;
+    width: 250px;
+    height: auto;
+}
+
+#side-bar .username {
+    position: absolute;
+    font-size: 0.9rem;
+    color: #6C6C6C;
+    left: 10px;
+    top: 10px;
+    width: 180px;
+}
+
+#side-bar .follow {
+    position: absolute;
+    color: #6C6C6C;
+    left: 10px;
+    top: 30px;
+}
+
+#side-bar .follow-number {
+    position: absolute;
+    color: #6C6C6C;
+    right: 20px;
+    top: 30px;
+}
+
+#side-bar .followList-btn a {
+    position: absolute;
+    text-align: center;
+    color: #fff;
+    background-color: #3C4767;
+    width: 120px;
+    padding: 10px 10px;
+    border-radius: 3px;
+    right: 20px;
+    top: 60px;
+}
+
+#side-bar .follower {
+    position: absolute;
+    color: #6C6C6C;
+    left: 10px;
+    top: 120px;
+}
+
+#side-bar .follower-number {
+    position: absolute;
+    color: #6C6C6C;
+    right: 20px;
+    top: 120px;
+}
+
+#side-bar .followerList-btn a {
+    position: absolute;
+    text-align: center;
+    color: #fff;
+    background-color: #3C4767;
+    width: 120px;
+    padding: 10px 10px;
+    border-radius: 3px;
+    right: 20px;
+    top: 150px;
+}
+
+#side-bar .search-btn {
+    position: absolute;
+    text-align: center;
+    right: 160px;
+}
+
+#side-bar .search-btn a {
+    position: absolute;
+    color: #fff;
+    background-color: #3C4767;
+    width: 120px;
+    padding: 10px 10px;
+    border-radius: 3px;
+    top: 250px;
 }

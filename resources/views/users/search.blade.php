@@ -2,6 +2,6 @@
 
 @section('content')
 
-
+検索
 
 @endsection
