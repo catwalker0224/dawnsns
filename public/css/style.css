@@ -119,7 +119,7 @@ h1 img {
     flex: 0 0 80%;
 }
 
-/* 投稿編集部分 */
+/* 投稿部分 */
 .tweet-form {
     position: relative;
     border-bottom: 7px solid #D7D7D7;
@@ -135,22 +135,17 @@ h1 img {
     border-radius: 50%;
 }
 
-.tweet-form .tweet-text {
+.tweet-form .tweet-area {
     position: absolute;
-    color: #E1E1E1;
     left: 70px;
     top: 20px;
 }
 
-.tweet-form .tweet-text input.form-control {
-    border: #fff;
+textarea {
     width: 500px;
     height: 60px;
-}
-
-.tweet-form .tweet-text input.form-control::placeholder {
-    position: absolute;
-    padding-top: -50px;
+    border: none;
+    overflow: hidden;
 }
 
 .tweet-form button {

@@ -18,7 +18,6 @@
 
 //Auth::routes();
 
-
 //ログアウト中のページ
 Route::get('/login', 'Auth\LoginController@login');
 Route::post('/login', 'Auth\LoginController@login');
@@ -28,13 +27,14 @@ Route::post('/register', 'Auth\RegisterController@register');
 
 Route::get('/added', 'Auth\RegisterController@added');
 
-
 //ログイン中のページ
 Route::group(['middleware' => 'auth'], function () {
   Route::get('/top','LoginController@login');
 });
 
 Route::get('/top','PostsController@index');
+
+Route::post('post/create','PostsController@tweet');
 
 Route::get('/logout','UsersController@logout');
 
@@ -44,5 +44,3 @@ Route::get('/search','UsersController@search');
 
 Route::get('/follow-list','PostsController@followList');
 Route::get('/follower-list','PostsController@followerList');
-
-Route::post('post/index', 'PostsController@tweet');
