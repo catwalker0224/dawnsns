@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -20,8 +21,8 @@ class PostsController extends Controller
 
     public function tweet(Request $request){
         $post = $request->input('newPost');
-        Post::insert(['posts'=>$post]);
-        return redirect('/index');
+        Post::insert(['posts'=>$post, 'user_id'=>Auth::id()]);
+        return redirect('/top');
     }
 
     public function followList(){
