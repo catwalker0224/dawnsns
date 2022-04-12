@@ -13,9 +13,12 @@
 <table class='table table-hover'>
   @foreach ($list as $list)
   <tr>
+    <td><img src="images/{{ $list->images }}" alt="ユーザーアイコン"></td>
     <td>{{ $list->username }}</td>
     <td>{{ $list->posts }}</td>
     <td>{{ $list->created_at }}</td>
+    <td><a class="btn-update" href="/post/{{$list->id}}/update-form"><img src="images/edit.png" alt="更新"></a></td>
+    <td><a class="btn-delete" href="/post/{{$list->id}}/delete" onclick="return confirm('このつぶやきを削除します。よろしいでしょうか？')"><img src="images/trash.png" alt="削除"></a></td>
   </tr>
   @endforeach
 </table>

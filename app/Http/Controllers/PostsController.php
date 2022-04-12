@@ -16,7 +16,9 @@ class PostsController extends Controller
 
     public function index(){
         $list = Post::join('users', 'posts.user_id', '=', 'users.id')
-        ->where('users.id', 16)
+        ->where('users.id', Auth::id())
+        ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
+        ->orderBy('posts.created_at', 'desc')
         ->get();
         return view('posts.index',['list'=>$list]);
     }
@@ -24,6 +26,12 @@ class PostsController extends Controller
     public function tweet(Request $request){
         $post = $request->input('newPost');
         Post::insert(['posts'=>$post, 'user_id'=>Auth::id(), 'created_at'=>now()]);
+        return redirect('/top');
+    }
+
+    public function delete($id){
+        Post::where('posts.id', ['id'=>$id])
+        ->delete();
         return redirect('/top');
     }
 
