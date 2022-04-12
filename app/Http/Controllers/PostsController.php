@@ -15,13 +15,15 @@ class PostsController extends Controller
     }
 
     public function index(){
-        $list = Post::where('id', 1)->get();
+        $list = Post::join('users', 'posts.user_id', '=', 'users.id')
+        ->where('users.id', 16)
+        ->get();
         return view('posts.index',['list'=>$list]);
     }
 
     public function tweet(Request $request){
         $post = $request->input('newPost');
-        Post::insert(['posts'=>$post, 'user_id'=>Auth::id()]);
+        Post::insert(['posts'=>$post, 'user_id'=>Auth::id(), 'created_at'=>now()]);
         return redirect('/top');
     }
 

@@ -19,10 +19,6 @@ class CreatePostsTable extends Migration
             $table->string('posts',150);
             $table->timestamps();
         });
-
-        Schema::table('posts', function (Blueprint $table) {
-            $table->string('username',255);
-        });
     }
 
     /**
