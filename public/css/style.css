@@ -150,7 +150,6 @@ textarea {
 
 .tweet-form button {
     position: absolute;
-    right: 15%;
     bottom: 10px;
     width: 41px;
     height: 36px;
@@ -283,4 +282,73 @@ textarea {
     width: 100%;
     margin: 0 auto;
     margin-bottom: 10px;
+}
+
+/* タイムライン */
+table {
+    width: 100%;
+}
+
+tr.posts-table {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 200px;
+    padding: 20px 0 10px;
+    border-bottom: 1px solid #D7D7D7;
+}
+
+td.posted-userIcon {
+    position: absolute;
+    display: block;
+    left: 30px;
+}
+
+td.posted-userIcon img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+td.posted-username {
+    position: absolute;
+    display: block;
+    left: 100px;
+    top: 30px;
+    font-size: 0.9rem;
+    color: #6C6C6C;
+}
+
+td.posts {
+    position: absolute;
+    display: block;
+    left: 100px;
+    top: 55px;
+    color: #6C6C6C;
+}
+
+td.posted-time {
+    position: absolute;
+    display: block;
+    top: 30px;
+    right: 40px;
+    font-size: 0.8rem;
+    color: #6C6C6C;
+}
+
+td.btn-edit {
+    position: absolute;
+    display: block;
+    right: 90px;
+    bottom: 15px;
+}
+
+img.edit-btn {
+    size: 0.8rem;
+}
+
+td.btn-delete {
+    position: absolute;
+    display: block;
+    right: 30px;
+    bottom: 10px;
 }

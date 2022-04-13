@@ -10,15 +10,15 @@
   </form>
 </div>
 
-<table class='table table-hover'>
+<table class="table-container">
   @foreach ($list as $list)
-  <tr>
-    <td><img src="images/{{ $list->images }}" alt="ユーザーアイコン"></td>
-    <td>{{ $list->username }}</td>
-    <td>{{ $list->posts }}</td>
-    <td>{{ $list->created_at }}</td>
+  <tr class="posts-table">
+    <td class="posted-userIcon"><img src="images/{{ $list->images }}" alt="ユーザーアイコン"></td>
+    <td class="posted-username">{{ $list->username }}</td>
+    <td class="posts">{{ $list->posts }}</td>
+    <td class="posted-time">{{ $list->created_at }}</td>
     <!-- 投稿編集ボタン -->
-    <td><a href="" class="modal-open" data-posted="modal{{$list->id}}"><img src="images/edit.png" alt="編集モーダル展開用ボタン"></a></td>
+    <td class="btn-edit"><a href="" class="modal-open" data-posted="modal{{$list->id}}"><img class="edit-btn" src="images/edit.png" alt="編集モーダル展開用ボタン"></a></td>
     <!-- 編集モーダルの内容 -->
     <div class="modal-main js-modal" id="modal{{$list->id}}">
       <div class="modal-inner">
@@ -29,7 +29,7 @@
       </div>
     </div>
     <!-- 投稿削除ボタン -->
-    <td><a class="btn-delete" href="/post/{{$list->id}}/delete" onclick="return confirm('このつぶやきを削除します。よろしいでしょうか？')"><img src="images/trash.png" alt="削除"></a></td>
+    <td class="btn-delete"><a href="/post/{{$list->id}}/delete" onclick="return confirm('このつぶやきを削除します。よろしいでしょうか？')"><img src="images/trash.png" alt="削除"></a></td>
   </tr>
   @endforeach
 </table>
