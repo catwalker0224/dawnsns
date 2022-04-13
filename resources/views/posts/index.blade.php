@@ -24,11 +24,11 @@
       <div class="modal-inner">
         <div class="inner-content">
           <p class="update-explain">つぶやいた内容を表示します。<br><br>つぶやきは最大を150文字までとし、それ以上のテキストが入力フォームに打ち込まれた場合は、投稿できないように設定してください。</p>
-          <a href="/post/{{$list->id}}/update-form" class="btn-update modal-open" data-id="modal{{$list->id}}"><img src="images/edit.png" alt="編集ボタン"></a>
+          <a href="/post/{{$list->id}}/update-form" class="btn-update"><img src="images/edit.png" alt="編集ボタン"></a>
         </div>
       </div>
     </div>
-
+    <!-- 投稿削除ボタン -->
     <td><a class="btn-delete" href="/post/{{$list->id}}/delete" onclick="return confirm('このつぶやきを削除します。よろしいでしょうか？')"><img src="images/trash.png" alt="削除"></a></td>
   </tr>
   @endforeach
