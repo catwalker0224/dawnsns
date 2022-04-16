@@ -15,6 +15,9 @@
 </div>
 <div class="input-username">
 {{ Form::text('username',null,['class' => 'input']) }}
+@if($errors->has('username'))
+{{ $errors->first('username') }}
+@endif
 </div>
 <div class="label-mailadress">
 {{ Form::label('MailAdress') }}

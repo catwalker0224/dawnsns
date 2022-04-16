@@ -18,13 +18,20 @@
     <td class="posts">{{ $list->posts }}</td>
     <td class="posted-time">{{ $list->created_at }}</td>
     <!-- 投稿編集ボタン -->
-    <td class="btn-edit"><a href="" class="modal-open" data-posted="modal{{$list->id}}"><img class="edit-btn" src="images/edit.png" alt="編集モーダル展開用ボタン"></a></td>
+    <td class="btn-edit">
+      <a href="/post/{{$list->id}}/update" class="modal-open" data-posted="modal{{$list->id}}">
+        <img class="edit-btn" src="images/edit.png" alt="編集モーダル展開用ボタン">
+      </a>
+    </td>
     <!-- 編集モーダルの内容 -->
     <div class="modal-main js-modal" id="modal{{$list->id}}">
       <div class="modal-inner">
         <div class="inner-content">
-          <p class="update-explain">つぶやいた内容を表示します。<br><br>つぶやきは最大を150文字までとし、それ以上のテキストが入力フォームに打ち込まれた場合は、投稿できないように設定してください。</p>
-          <a href="/post/{{$list->id}}/update-form" class="btn-update"><img src="images/edit.png" alt="編集ボタン"></a>
+          <form action="/post/{{$list->id}}/update" method="post" class="update-area">@csrf
+            <input type="hidden" name="id" value="{{$list->id}}">
+            <input type="text" name="updatePost" required, placeholder="{{$list->posts}}">
+            <input class="update-btn" type="image" src="images/edit.png" alt="編集ボタン">
+          </form>
         </div>
       </div>
     </div>

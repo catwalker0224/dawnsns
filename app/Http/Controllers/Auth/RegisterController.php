@@ -53,6 +53,8 @@ class RegisterController extends Controller
             'mail' => 'required|string|email|min:4|max:12|unique:users',
             'password' => 'required|string|regex:/^[a-zA-Z0-9]+$/|min:4|max:12|unique:users',
             'password-confirm' => 'required|string|regex:/^[a-zA-Z0-9]+$/|min:4|max:12|unique:users|same:password'
+        ],[
+            'required' => 'この項目は入力必須です',
         ]);
     }
 
@@ -71,7 +73,6 @@ class RegisterController extends Controller
         ]);
     }
 
-
     // public function registerForm(){
     //     return view("auth.register");
     // }
@@ -79,7 +80,12 @@ class RegisterController extends Controller
     public function register(Request $request){
         if($request->isMethod('post')){
             $data = $request->input();
-            $this->validator($data);
+            $val = $this->validator($data);
+            if ($val->fails()){
+                return redirect('/register')
+                    ->withErrors($val)
+                    ->withInput();
+            }
             $this->create($data);
             return redirect('added')->with('username', $data['username']);
         }

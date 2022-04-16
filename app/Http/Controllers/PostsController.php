@@ -29,6 +29,14 @@ class PostsController extends Controller
         return redirect('/top');
     }
 
+    public function update(Request $request){
+        $id = $request->input('id');
+        $update_post = $request->input('updatePost');
+        POST::where('id', $id)
+        ->update(['posts' => $update_post]);
+        return redirect('/top');
+    }
+
     public function delete($id){
         Post::where('posts.id', ['id'=>$id])
         ->delete();

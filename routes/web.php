@@ -36,6 +36,8 @@ Route::get('/top','PostsController@index');
 
 Route::post('post/create','PostsController@tweet');
 
+Route::post('post/{id}/update','PostsController@update');
+
 Route::get('post/{id}/delete','PostsController@delete');
 
 Route::get('/logout','UsersController@logout');
