@@ -42,11 +42,4 @@ class PostsController extends Controller
         ->delete();
         return redirect('/top');
     }
-
-    public function followList(){
-        return view('follows.followList');
-    }
-    public function followerList(){
-        return view('follows.followerList');
-    }
 }

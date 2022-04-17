@@ -2,6 +2,7 @@
 
 @section('content')
 
+<!-- つぶやき投稿フォーム -->
 <div class="tweet-form">
   <p class="user-icon"><img src="images/dawn.png" alt="ユーザーアイコン"></p>
   <form action="post/create" method="post" class="tweet-area">@csrf
@@ -9,7 +10,7 @@
     <button type="submit"><img src="images/post.png" alt="投稿"></button>
   </form>
 </div>
-
+<!-- つぶやきリストのテーブル -->
 <table class="table-container">
   @foreach ($list as $list)
   <tr class="posts-table">
@@ -36,7 +37,12 @@
       </div>
     </div>
     <!-- 投稿削除ボタン -->
-    <td class="btn-delete"><a href="/post/{{$list->id}}/delete" onclick="return confirm('このつぶやきを削除します。よろしいでしょうか？')"><img src="images/trash.png" alt="削除"></a></td>
+    <td class="btn-delete">
+      <a href="/post/{{$list->id}}/delete" onclick="return confirm('このつぶやきを削除します。よろしいでしょうか？')">
+      <img src="images/trash.png" alt="削除1">
+      <img src="images/trash_h.png" alt="削除2">
+      </a>
+    </td>
   </tr>
   @endforeach
 </table>

@@ -31,20 +31,18 @@ Route::get('/added', 'Auth\RegisterController@added');
 Route::group(['middleware' => 'auth'], function () {
   Route::get('/top','LoginController@login');
 });
-
+// トップページ
 Route::get('/top','PostsController@index');
-
 Route::post('post/create','PostsController@tweet');
-
 Route::post('post/{id}/update','PostsController@update');
-
 Route::get('post/{id}/delete','PostsController@delete');
-
 Route::get('/logout','UsersController@logout');
-
 Route::get('/profile','UsersController@profile');
 
+// 検索ページ
 Route::get('/search','UsersController@search');
+Route::post('/search','UsersController@keywordSearch');
 
-Route::get('/follow-list','PostsController@followList');
-Route::get('/follower-list','PostsController@followerList');
+Route::get('/follow-list','FollowsController@followList');
+
+Route::get('/follower-list','FollowsController@followerList');
