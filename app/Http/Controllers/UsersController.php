@@ -27,7 +27,7 @@ class UsersController extends Controller
     }
     // リムーブ用メソッド
     public function remove($id){
-        Follow::where('follow.id', ['id'=>$id])
+        Follow::where('follows.follow', ['id'=>$id])
         ->delete();
         return redirect('/search');
     }
