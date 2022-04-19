@@ -41,7 +41,9 @@ Route::get('/profile','UsersController@profile');
 
 // 検索ページ
 Route::get('/search','UsersController@search');
-Route::post('/search','UsersController@keywordSearch');
+Route::post('/search','UsersController@search');
+Route::post('search/{id}/follow','UsersController@follow');
+Route::post('search/{id}/remove','UsersController@remove');
 
 Route::get('/follow-list','FollowsController@followList');
 

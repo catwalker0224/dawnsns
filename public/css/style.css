@@ -414,3 +414,11 @@ button::before {
     content: "\f002";
     color: #fff;
 }
+
+.search-word {
+    position: absolute;
+    color: #6C6C6C;
+    right: 200px;
+    margin: 35px 0;
+    font-size: 1.1rem;
+}

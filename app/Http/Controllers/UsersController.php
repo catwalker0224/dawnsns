@@ -5,22 +5,31 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use App\User;
+use App\Follow;
 
 class UsersController extends Controller
 {
     // search.blade
-    public function search(){
-        return view('users.search');
-    }
-    public function keywordSearch(Request $request){
+    // 検索用メソッド
+    public function search(Request $request){
         $keyword = $request->input('keyword');
         $query = User::query();
         if(isset($keyword)){
-            $query->where('username', 'like', '%'.$keyword.'%')
-            ->select('users.id', 'users.username', 'users.images');
-            $results = $query->get();
-            return view('users.search',['results'=>$results]);
+            $query->where('username', 'like', '%'.$keyword.'%');
         }
+        $results = $query->select('users.id', 'users.username', 'users.images')->get();
+            return view('users.search',['results'=>$results, 'keyword'=>$keyword]);
+    }
+    // フォロー用メソッド
+    public function follow($id){
+        Follow::insert(['follow'=>$id, 'follower'=>Auth::id()]);
+        return redirect('/search');
+    }
+    // リムーブ用メソッド
+    public function remove($id){
+        Follow::where('follow.id', ['id'=>$id])
+        ->delete();
+        return redirect('/search');
     }
 
     public function profile(){
