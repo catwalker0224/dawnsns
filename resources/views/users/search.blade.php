@@ -18,19 +18,19 @@
 </div>
 
 <!-- 検索結果リスト -->
-<table class="search-result">
+<table>
   @foreach ($results as $result)
-  <tr>
+  <tr class="result-table">
     <td class="found-userIcon"><img src="images/{{ $result->images }}" alt="ユーザーアイコン"></td>
     <td class="found-username">{{ $result->username }}</td>
     <td class="switch-btn">
       @if(in_array($result->id, array_column($followings, 'follow')))
       <form action="/search/{{$result->id}}/remove" method="post">@csrf
-      <button type="submit" name="remove">フォローを外す</button>
+      <button class=remove-btn type="submit" name="remove">フォローをはずす</button>
       </form>
       @else
       <form action="/search/{{$result->id}}/follow" method="post">@csrf
-      <button type="submit" name="follow">フォローする</button>
+      <button class=follow-btn type="submit" name="follow">フォローする</button>
       </form>
       @endif
     </td>

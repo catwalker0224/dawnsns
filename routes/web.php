@@ -31,11 +31,13 @@ Route::get('/added', 'Auth\RegisterController@added');
 Route::group(['middleware' => 'auth'], function () {
   Route::get('/top','LoginController@login');
 });
+
 // トップページ
 Route::get('/top','PostsController@index');
 Route::post('post/create','PostsController@tweet');
 Route::post('post/{id}/update','PostsController@update');
 Route::get('post/{id}/delete','PostsController@delete');
+// Route::get('/top','PostsController@countFollows');
 Route::get('/logout','UsersController@logout');
 Route::get('/profile','UsersController@profile');
 

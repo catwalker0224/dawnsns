@@ -43,12 +43,12 @@
             @yield('content')
         </div >
         <div id="side-bar">
-                <p class="username">{{Auth::user()->username}}さんの</p>
+                <p class="username">{{ Auth::user()->username }}さんの</p>
                 <p class="follow">フォロー数</p>
-                <p class="follow-number">〇〇名</p>
+                <p class="follow-number">{{ $followNumber }}名</p>
                 <p class="followList-btn"><a href="/follow-list">フォローリスト</a></p>
                 <p class="follower">フォロワー数</p>
-                <p class="follower-number">〇〇名</p>
+                <p class="follower-number">{{ $followerNumber }}名</p>
                 <p class="followerList-btn"><a href="/follower-list">フォロワーリスト</a></p>
                 <p class="search-btn"><a href="/search">ユーザー検索</a></p>
         </div>

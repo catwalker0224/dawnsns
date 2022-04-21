@@ -422,3 +422,48 @@ button::before {
     margin: 35px 0;
     font-size: 1.1rem;
 }
+
+tr.result-table {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    padding: 20px 0 10px;
+}
+
+td.found-userIcon {
+    position: absolute;
+    left: 60px;
+    top: 30px;
+}
+
+td.found-userIcon img {
+    width: 45px;
+    border-radius: 50%;
+}
+
+td.found-username {
+    position: absolute;
+    left: 130px;
+    top: 45px;
+    color: #6C6C6C;
+}
+
+td.switch-btn button {
+    position: absolute;
+    width: 140px;
+    height: 35px;
+    right: 300px;
+    top: 33px;
+    color: #fff;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+}
+
+button.remove-btn {
+    background: #B95656;
+}
+
+button.follow-btn {
+    background: #7895D7;
+}

@@ -10,7 +10,7 @@ use App\Follow;
 class UsersController extends Controller
 {
     // search.blade
-    // 検索用メソッド
+    // 検索結果表示用メソッド
     public function search(Request $request){
         $keyword = $request->input('keyword');
         $query = User::query();
@@ -19,7 +19,9 @@ class UsersController extends Controller
         }
         $results = $query->select('users.id', 'users.username', 'users.images')->get();
         $followings = Follow::where('follower', Auth::id())->get()->toArray();
-        return view('users.search',['results'=>$results, 'keyword'=>$keyword, 'followings'=>$followings]);
+        $followNumber = Follow::where('follower', Auth::id())->count();
+        $followerNumber = Follow::where('follow', Auth::id())->count();
+        return view('users.search',['results'=>$results, 'keyword'=>$keyword, 'followings'=>$followings, 'followNumber'=>$followNumber, 'followerNumber'=>$followerNumber]);
     }
     // フォロー用メソッド
     public function follow($id){

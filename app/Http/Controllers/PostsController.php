@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
+use App\Follow;
 
 class PostsController extends Controller
 {
@@ -20,7 +21,9 @@ class PostsController extends Controller
         ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
         ->orderBy('posts.created_at', 'desc')
         ->get();
-        return view('posts.index',['list'=>$list]);
+        $followNumber = Follow::where('follower', Auth::id())->count();
+        $followerNumber = Follow::where('follow', Auth::id())->count();
+        return view('posts.index',['list'=>$list, 'followNumber'=>$followNumber, 'followerNumber'=>$followerNumber]);
     }
 
     public function tweet(Request $request){
