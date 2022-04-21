@@ -18,7 +18,8 @@ class UsersController extends Controller
             $query->where('username', 'like', '%'.$keyword.'%');
         }
         $results = $query->select('users.id', 'users.username', 'users.images')->get();
-            return view('users.search',['results'=>$results, 'keyword'=>$keyword]);
+        $followings = Follow::where('follower', Auth::id())->get()->toArray();
+        return view('users.search',['results'=>$results, 'keyword'=>$keyword, 'followings'=>$followings]);
     }
     // フォロー用メソッド
     public function follow($id){

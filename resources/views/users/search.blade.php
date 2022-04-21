@@ -24,13 +24,13 @@
     <td class="found-userIcon"><img src="images/{{ $result->images }}" alt="ユーザーアイコン"></td>
     <td class="found-username">{{ $result->username }}</td>
     <td class="switch-btn">
-      @if 『$result->id(ユーザーのid)が$followingのfollowの項目にあるか』
-      <form action="/search/{{$result->id}}/follow" method="post">@csrf
-      <button type="submit" name="follow">フォローする</button>
-      </form>
-      @else
+      @if(in_array($result->id, array_column($followings, 'follow')))
       <form action="/search/{{$result->id}}/remove" method="post">@csrf
       <button type="submit" name="remove">フォローを外す</button>
+      </form>
+      @else
+      <form action="/search/{{$result->id}}/follow" method="post">@csrf
+      <button type="submit" name="follow">フォローする</button>
       </form>
       @endif
     </td>
