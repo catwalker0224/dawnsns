@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use Illuminate\Http\Request;
+use Auth;
 use App\User;
 use App\Follow;
 
@@ -18,10 +18,10 @@ class UsersController extends Controller
             $query->where('username', 'like', '%'.$keyword.'%');
         }
         $results = $query->select('users.id', 'users.username', 'users.images')->get();
-        $followings = Follow::where('follower', Auth::id())->get()->toArray();
         $followNumber = Follow::where('follower', Auth::id())->count();
         $followerNumber = Follow::where('follow', Auth::id())->count();
-        return view('users.search',['results'=>$results, 'keyword'=>$keyword, 'followings'=>$followings, 'followNumber'=>$followNumber, 'followerNumber'=>$followerNumber]);
+        $followings = Follow::where('follower', Auth::id())->get()->toArray();
+        return view('users.search',['results'=>$results, 'keyword'=>$keyword, 'followings'=>$followings]);
     }
     // フォロー用メソッド
     public function follow($id){

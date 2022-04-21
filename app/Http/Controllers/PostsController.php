@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Post;
 use Illuminate\Support\Facades\Auth;
+use App\Post;
 use App\Follow;
 
 class PostsController extends Controller
@@ -23,7 +22,7 @@ class PostsController extends Controller
         ->get();
         $followNumber = Follow::where('follower', Auth::id())->count();
         $followerNumber = Follow::where('follow', Auth::id())->count();
-        return view('posts.index',['list'=>$list, 'followNumber'=>$followNumber, 'followerNumber'=>$followerNumber]);
+        return view('posts.index',['list'=>$list]);
     }
 
     public function tweet(Request $request){
@@ -35,7 +34,7 @@ class PostsController extends Controller
     public function update(Request $request){
         $id = $request->input('id');
         $update_post = $request->input('updatePost');
-        POST::where('id', $id)
+        Post::where('id', $id)
         ->update(['posts' => $update_post]);
         return redirect('/top');
     }
