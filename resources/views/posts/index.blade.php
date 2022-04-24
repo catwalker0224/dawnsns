@@ -18,6 +18,7 @@
     <td class="posted-username">{{ $list->username }}</td>
     <td class="posts">{{ $list->posts }}</td>
     <td class="posted-time">{{ $list->created_at }}</td>
+    @if( $list->user_id  ==  Auth::user()->id )
     <!-- 投稿編集ボタン -->
     <td class="btn-edit">
       <a href="/post/{{$list->id}}/update" class="modal-open" data-posted="modal{{$list->id}}">
@@ -43,6 +44,8 @@
       <img src="images/trash_h.png" alt="削除2">
       </a>
     </td>
+    @else
+    @endif
   </tr>
   @endforeach
 </table>

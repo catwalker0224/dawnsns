@@ -28,6 +28,7 @@
       <form action="/search/{{$result->id}}/remove" method="post">@csrf
       <button class=remove-btn type="submit" name="remove">フォローをはずす</button>
       </form>
+      @elseif( $result->id == Auth::user()->id)
       @else
       <form action="/search/{{$result->id}}/follow" method="post">@csrf
       <button class=follow-btn type="submit" name="follow">フォローする</button>

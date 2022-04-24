@@ -388,8 +388,8 @@ img.edit-btn {
 .search-form input {
     position: absolute;
     display: block;
-    height: 40px;
     width: 350px;
+    height: 40px;
     left: 55px;
     margin: 20px 0;
 }
@@ -465,5 +465,28 @@ button.remove-btn {
 }
 
 button.follow-btn {
-    background: #7895D7;
+    background: #4B71CA;
+}
+
+/* フォローリスト */
+.followIcon {
+    position: relative;
+    border-bottom: 7px solid #D7D7D7;
+    height: 250px;
+    width: auto;
+}
+
+.followIcon h1 {
+    position: absolute;
+    font-size: 2rem;
+    color: #6C6C6C;
+    top: 40px;
+    left: 55px;
+}
+
+.followIcon img {
+    position: absolute;
+    width: 50px;
+    border-radius: 50%;
+
 }

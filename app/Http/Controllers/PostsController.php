@@ -11,9 +11,10 @@ class PostsController extends Controller
 {
     public function index(){
         $list = Post::join('users', 'posts.user_id', '=', 'users.id')
-        ->leftJoin('follows', 'follows.follower', '=', 'posts.user_id')
+        ->leftJoin('follows', 'posts.user_id', '=', 'follows.follow')
+        ->groupBy('posts.id')
         ->where('users.id', Auth::id())
-        ->orWhere('follows.follow', ['follows.follower'=>Auth::id()])
+        ->orWhere('follows.follower', Auth::id())
         ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
         ->orderBy('posts.created_at', 'desc')
         ->get();
