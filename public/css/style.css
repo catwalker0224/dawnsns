@@ -485,8 +485,7 @@ button.follow-btn {
 }
 
 .followIcon img {
-    position: absolute;
     width: 50px;
     border-radius: 50%;
-
+    margin: 20px;
 }

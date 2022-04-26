@@ -5,8 +5,8 @@
 <!-- フォローアカウントアイコンエリア -->
 <div class="followIcon">
   <h1>Follow list</h1>
-  @foreach ($followLists as $followList)
-  <a href="/profile/{{$followList->id}}"><img src="images/{{ $followList->images }}" alt="フォローアカウントアイコン">
+  @foreach ($followImages as $followImage)
+  <a href="/profile/{{ $followImage->user_id }}"><img src="images/{{ $followImage->images }}" alt="フォローアカウントアイコン">
   @endforeach
 </div>
 <!-- フォローアカウントつぶやきリストエリア -->

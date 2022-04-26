@@ -17,7 +17,14 @@ class FollowsController extends Controller
         ->select('posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
         ->orderBy('posts.created_at', 'desc')
         ->get();
-        return view('follows.followList', ['followLists'=>$followLists]);
+        $followImages = Post::join('users', 'posts.user_id', '=', 'users.id')
+        ->leftJoin('follows', 'follows.follow', '=', 'users.id')
+        ->groupBy('follows.follow')
+        ->where('follows.follower', Auth::id())
+        ->select('posts.user_id', 'users.images')
+        ->orderBy('posts.user_id', 'asc')
+        ->get();
+        return view('follows.followList', ['followLists'=>$followLists, 'followImages'=>$followImages]);
     }
     public function followerList(){
         return view('follows.followerList');

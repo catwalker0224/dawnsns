@@ -52,7 +52,7 @@ class RegisterController extends Controller
             'username' => 'required|string|min:4|max:12',
             'mail' => 'required|string|email|min:4|max:12|unique:users',
             'password' => 'required|string|regex:/^[a-zA-Z0-9]+$/|min:4|max:12|unique:users',
-            'password-confirm' => 'required|string|regex:/^[a-zA-Z0-9]+$/|min:4|max:12|unique:users|same:password'
+            'password-confirm' => 'required|string|regex:/^[a-zA-Z0-9]+$/|min:4|max:12|same:password'
         ],[
             'required' => 'この項目は入力必須です',
         ]);

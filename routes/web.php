@@ -47,6 +47,8 @@ Route::post('/search','UsersController@search');
 Route::post('search/{id}/follow','UsersController@follow');
 Route::post('search/{id}/remove','UsersController@remove');
 
+// フォローリスト
 Route::get('/follow-list','FollowsController@followList');
 
+// フォロワーリスト
 Route::get('/follower-list','FollowsController@followerList');
