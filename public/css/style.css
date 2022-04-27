@@ -469,14 +469,16 @@ button.follow-btn {
 }
 
 /* フォローリスト */
-.followIcon {
+.followIcon,
+.followerIcon {
     position: relative;
     border-bottom: 7px solid #D7D7D7;
     height: 250px;
     width: auto;
 }
 
-.followIcon h1 {
+.followIcon h1,
+.followerIcon h1 {
     position: absolute;
     font-size: 2rem;
     color: #6C6C6C;
@@ -484,8 +486,19 @@ button.follow-btn {
     left: 55px;
 }
 
-.followIcon img {
+.followIcon-viewer,
+.followerIcon-viewer {
+    position: absolute;
+    overflow: scroll;
+    width: 750px;
+    height: 150px;
+    left: 60px;
+    top: 80px;
+}
+
+.followIcon img,
+.followerIcon img {
     width: 50px;
     border-radius: 50%;
-    margin: 20px;
+    margin: 10px;
 }

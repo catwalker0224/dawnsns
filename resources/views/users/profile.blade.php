@@ -2,6 +2,7 @@
 
 @section('content')
 
+プロフィールページ
 
 
 @endsection
