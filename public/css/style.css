@@ -502,3 +502,130 @@ button.follow-btn {
     border-radius: 50%;
     margin: 10px;
 }
+
+/* プロフィール編集フォーム */
+form.profile-edit {
+    position: relative;
+}
+
+form img.loginIcon {
+    position: absolute;
+    left: 100px;
+    top: 50px;
+    border-radius: 50%;
+}
+
+form label.username,
+form label.mail-address,
+form label.password,
+form label.new-password,
+form label.bio,
+form label.icon-image {
+    position: absolute;
+    left: 200px;
+    width: 150px;
+    height: 30px;
+    color: #6C6C6C;
+}
+
+label.username {
+    position: absolute;
+    top: 70px;
+}
+
+label.mail-address {
+    position: absolute;
+    top: 140px;
+}
+
+label.password {
+    position: absolute;
+    top: 210px;
+}
+
+label.new-password {
+    position: absolute;
+    top: 280px;
+}
+
+label.bio {
+    position: absolute;
+    top: 350px;
+}
+
+label.icon-image {
+    position: absolute;
+    top: 450px;
+}
+
+input.username,
+input.mail-address,
+input.password,
+input.new-password,
+input.bio,
+input.icon-image {
+    position: absolute;
+    top: -10px;
+    left: 180px;
+    width: 250px;
+    height: 30px;
+    color: #6C6C6C;
+    border: none;
+    background-color: #f2f2f2;
+}
+
+input.new-password {
+    background-color: #fff;
+}
+
+input.bio {
+    height: 70px;
+}
+
+input.icon-image {
+    display: none;
+    height: 100px;
+    width: 300px;
+}
+
+.button-area {
+    position: absolute;
+    height: 100px;
+    width: 300px;
+    left: 380px;
+    top: 440px;
+    background-color: #f2f2f2;
+}
+
+.file-button {
+    position: absolute;
+    width: 150px;
+    height: 30px;
+    left: 255px;
+    top: 25px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.choose-file {
+    margin: 7px 0;
+}
+
+.profile-update {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    left: 500px;
+    top: 580px;
+    color: #fff;
+    background-color: #7B9979;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.profile-update::before {
+    display: none;
+}
