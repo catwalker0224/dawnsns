@@ -39,7 +39,6 @@ Route::post('post/{id}/update','PostsController@update');
 Route::get('post/{id}/delete','PostsController@delete');
 
 Route::get('/logout','UsersController@logout');
-Route::get('/profile','UsersController@profile');
 
 // 検索ページ
 Route::get('/search','UsersController@search');
@@ -52,3 +51,7 @@ Route::get('/follow-list','FollowsController@followList');
 
 // フォロワーリスト
 Route::get('/follower-list','FollowsController@followerList');
+
+// マイプロフィール編集ページ
+Route::get('/profile','UsersController@profile');
+Route::post('users/profile','UsersController@update');
