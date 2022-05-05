@@ -51,11 +51,11 @@ class UsersController extends Controller
         $path = $request
         ->file('iconImage')
         ->storeAs('public/images',$file_name);
-        return User::where('images', Auth::id())
-        ->basename($path)->save();
-        // $image = User::find(\Auth::id());
-        // $image->images = basename($path);
-        // $image->save();
+        return User::where('id', Auth::id())
+        ->basename([
+            'images' => $path
+        ])
+        ->save();
         }
         }
     // バリデーション
