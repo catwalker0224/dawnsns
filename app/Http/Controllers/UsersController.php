@@ -39,45 +39,59 @@ class UsersController extends Controller
     public function profile(){
         return view('users.profile');
     }
+// 画像アップロード用メソッド
+    public function uploadImage(Request $request){
+        $file_name = $request
+        ->file('iconImage')
+        ->getClientOriginalName();
+        $this->validate($request,[
+            'iconImage' => 'image|SafeFilename',
+        ]);
+        if($file_name->isValid([])){
+        $path = $request
+        ->file('iconImage')
+        ->storeAs('public/images',$file_name);
+        return User::where('images', Auth::id())
+        ->basename($path)->save();
+        // $image = User::find(\Auth::id());
+        // $image->images = basename($path);
+        // $image->save();
+        }
+        }
     // バリデーション
     protected function validator(array $data){
         return Validator::make($data, [
             'username' => 'string|min:4|max:12',
             'mail' => 'string|email|min:4|max:12|unique:users',
-            // 'newPassword' => 'string|regex:/^[a-zA-Z0-9]+$/|min:4|max:12|unique:users',
+            // 'password' => 'string|regex:/^[a-zA-Z0-9]+$/|min:4|max:12|unique:users',
             'bio' => 'string|max:200',
-            'iconImage' => 'image|regex:/^[a-zA-Z0-9]+$/',
         ]);
     }
-    // マイプロフィール編集用メソッド
-    public function update(Request $request){
-        $edit_username = $request->input('username');
-        $edit_mailAddress = $request->input('mailAddress');
-        // $edit_newPassword = $request->input('newPassword');
-        $edit_bio = $request->input('bio');
-        $edit_iconImage = $request->input('iconImage');
-        // if(isset($edit_newPassword)){
-        //     $edit_newPassword = User::where('password', Auth::id());
-        // }
-        User::where('id', Auth::id())->update([
-            'username' => $edit_username,
-            'mail' => $edit_mailAddress,
-            // 'password' => $edit_newPassword,
-            'bio' => $edit_bio,
-            'images' => $edit_iconImage
+    // マイプロフィール編集用メソッド①
+    public function update(array $data){
+        if(isset($data['newPassword'])){
+        return User::where('id', Auth::id())
+        ->update([
+            'username' => $data['username'],
+            'mail' => $data['mailAddress'],
+            'password' => bcrypt($data['newPassword']),
+            'bio' => $data['bio'],
         ]);
-        // $file_upload = $request->file('iconImage')->store('public/images');
-        if($request->isMethod('post')){
+    }
+    }
+    // マイプロフィール編集用メソッド②
+    public function editProfile(Request $request){
+          if($request->isMethod('post')){
             $data = $request->input();
             $val = $this->validator($data);
             if($val->fails()){
-                return redirect('users.profile')
+                return redirect('/profile')
                 ->withErrors($val)
                 ->withInput();
             }
             $this->update($data);
-            return redirect('users.profile',['file_upload'=>$file_upload]);
-        }
+            return redirect('/profile');
+    }
     }
 
     public function logout(){

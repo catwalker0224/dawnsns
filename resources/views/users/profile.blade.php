@@ -4,11 +4,11 @@
 
 <!-- プロフィール編集フォーム -->
 <img class="loginIcon" src="images/{{ Auth::user()->images }}" alt="ログインユーザーアイコン">
-<form action="users/profile" method="post" class="profile-edit" enctype="multipart/form-data">@csrf
+<form action="/profile" method="post" class="profile-edit" enctype="multipart/form-data">@csrf
   <label class="username">UserName
     <input type="text" name="username" value="{{ Auth::user()->username }}" class="username">
   </label><br>
-  <label class="mail-address">MailAdress
+  <label class="mail-address">MailAddress
     <input type="email" name="mailAddress" value="{{ Auth::user()->mail }}" class="mail-address">
   </label><br>
   <label class="password">Password
