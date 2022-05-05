@@ -15,7 +15,7 @@ class ValidatorServiceProvider extends ServiceProvider
     public function boot()
     {
       \Validator::resolver(function ($translator, $data, $rules, $messages) {
-          return new CustomValidator($translator, $data, $rules, $messages);
+          return new Domain\CustomValidator($translator, $data, $rules, $messages);
       });
     }
 

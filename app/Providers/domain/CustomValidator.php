@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain;
+namespace App\Providers\Domain;
 
 class CustomValidator extends \Illuminate\Validation\Validator
 {
