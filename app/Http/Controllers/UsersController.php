@@ -107,6 +107,25 @@ class UsersController extends Controller
     }
     }
 
+    // others.blade
+    // ユーザープロフィール表示用メソッド
+    public function othersProfile(Request $request){
+        $id = $request->input('id');
+
+        $othersProfile = User::where('users.id', $id)
+        ->select('users.username','users.bio', 'users.images')
+        ->get();
+
+        $othersPosts = Post::join('users', 'posts.user_id', '=', 'users.id')
+        ->where('users.id', $id)
+        ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
+        ->orderBy('posts.created_at', 'desc')
+        ->get();
+
+        return view('users.others', ['othersProfile'=>$othersProfile,'othersPosts'=>$othersPosts]);
+    }
+
+
     public function logout(){
         Auth::logout();
         return redirect('/login');

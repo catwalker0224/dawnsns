@@ -55,3 +55,6 @@ Route::get('/follower-list','FollowsController@followerList');
 // マイプロフィール編集ページ
 Route::get('/profile','UsersController@profile');
 Route::post('/profile','UsersController@editProfile');
+
+// ユーザープロフィールページ
+Route::get('/profile/{id}','UsersController@othersProfile');
