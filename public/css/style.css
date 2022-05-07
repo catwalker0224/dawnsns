@@ -508,10 +508,12 @@ form.profile-edit {
     position: relative;
 }
 
-form img.loginIcon {
+img.loginIcon {
     position: absolute;
-    left: 100px;
-    top: 50px;
+    left: 120px;
+    top: 120px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 

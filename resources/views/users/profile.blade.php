@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- プロフィール編集フォーム -->
-<img class="loginIcon" src="images/{{ Auth::user()->images }}" alt="ログインユーザーアイコン">
+<img class="loginIcon" src="/storage/images/{{ Auth::user()->images }}" alt="ログインユーザーアイコン">
 <form action="/profile" method="post" class="profile-edit" enctype="multipart/form-data">@csrf
   <label class="username">UserName
     <input type="text" name="username" value="{{ Auth::user()->username }}" class="username">

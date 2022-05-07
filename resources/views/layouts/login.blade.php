@@ -35,7 +35,7 @@
           </ul>
       </div>
       </div>
-      <p class="user-icon"><img src="images/dawn.png"></p>
+      <p class="user-icon"><img src="/storage/images/{{ Auth::user()->images }}"></p>
       </div>
     </header>
     <div id="row">

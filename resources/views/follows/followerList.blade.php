@@ -8,7 +8,7 @@
   <div class="followerIcon-viewer">
   @foreach ($followerImages as $followerImage)
   <a href="/profile/{{ $followerImage->id }}">
-    <img src="images/{{ $followerImage->images }}" alt="フォロワーアカウントアイコン">
+    <img src="/storage/images/{{ $followerImage->images }}" alt="フォロワーアカウントアイコン">
   </a>
   @endforeach
   </div>
@@ -19,7 +19,7 @@
   <tr class="posts-table">
     <td class="posted-userIcon">
       <a href="/profile/{{ $followerList->user_id }}">
-        <img src="images/{{ $followerList->images }}" alt="フォロワーアカウントアイコン">
+        <img src="/storage/images/{{ $followerList->images }}" alt="フォロワーアカウントアイコン">
       </a>
     </td>
     <td class="posted-username">{{ $followerList->username }}</td>

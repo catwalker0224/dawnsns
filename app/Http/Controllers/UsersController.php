@@ -40,24 +40,24 @@ class UsersController extends Controller
         return view('users.profile');
     }
 // 画像アップロード用メソッド
-    public function uploadImage(Request $request){
-        $file_name = $request
-        ->file('iconImage')
-        ->getClientOriginalName();
-        $this->validate($request,[
-            'iconImage' => 'image|SafeFilename',
-        ]);
-        if($file_name->isValid([])){
-        $path = $request
-        ->file('iconImage')
-        ->storeAs('public/images',$file_name);
-        return User::where('id', Auth::id())
-        ->basename([
-            'images' => $path
-        ])
-        ->save();
-        }
-        }
+    // public function uploadImage(Request $request){
+    //     $file_name = $request
+    //     ->file('iconImage')
+    //     ->getClientOriginalName();
+    //     $this->validate($request,[
+    //         'iconImage' => 'image|SafeFilename',
+    //     ]);
+    //     if($file_name->isValid([])){
+    //     $path = $request
+    //     ->file('iconImage')
+    //     ->storeAs('public/images',$file_name);
+    //     return User::where('id', Auth::id())
+    //     ->basename([
+    //         'images' => $path
+    //     ])
+    //     ->save();
+    //     }
+    //     }
     // バリデーション
     protected function validator(array $data){
         return Validator::make($data, [
@@ -90,6 +90,19 @@ class UsersController extends Controller
                 ->withInput();
             }
             $this->update($data);
+
+            $icon = $request->file('iconImage');
+            if(isset($icon)){
+                $request->validate([
+                    'iconImage' => 'image',
+                ]);
+                $file_name = $icon->getClientOriginalName();
+                $path = $icon->storeAs('public/images',$file_name);
+                User::where('id', Auth::id())
+                ->update([
+                    'images' => $file_name
+                ]);
+            }
             return redirect('/profile');
     }
     }

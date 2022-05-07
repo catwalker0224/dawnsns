@@ -4,7 +4,7 @@
 
 <!-- つぶやき投稿フォーム -->
 <div class="tweet-form">
-  <p class="user-icon"><img src="images/dawn.png" alt="ユーザーアイコン"></p>
+  <p class="user-icon"><img src="/storage/images/{{ Auth::user()->images }}" alt="ユーザーアイコン"></p>
   <form action="post/create" method="post" class="tweet-area">@csrf
     <textarea name="newPost" rows="3" cols="50" required, placeholder='何をつぶやこうか...?'></textarea>
     <button type="submit"><img src="images/post.png" alt="投稿"></button>
@@ -14,7 +14,7 @@
 <table class="table-container">
   @foreach ($list as $list)
   <tr class="posts-table">
-    <td class="posted-userIcon"><img src="images/{{ $list->images }}" alt="ユーザーアイコン"></td>
+    <td class="posted-userIcon"><img src="/storage/images/{{ $list->images }}" alt="ユーザーアイコン"></td>
     <td class="posted-username">{{ $list->username }}</td>
     <td class="posts">{{ $list->posts }}</td>
     <td class="posted-time">{{ $list->created_at }}</td>

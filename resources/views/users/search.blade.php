@@ -21,7 +21,7 @@
 <table>
   @foreach ($results as $result)
   <tr class="result-table">
-    <td class="found-userIcon"><img src="images/{{ $result->images }}" alt="ユーザーアイコン"></td>
+    <td class="found-userIcon"><img src="/storage/images/{{ $result->images }}" alt="ユーザーアイコン"></td>
     <td class="found-username">{{ $result->username }}</td>
     <td class="switch-btn">
       @if(in_array($result->id, array_column($followings, 'follow')))
