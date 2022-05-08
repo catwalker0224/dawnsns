@@ -15,27 +15,60 @@
 </div>
 <div class="input-username">
 {{ Form::text('username',null,['class' => 'input']) }}
+<p class="error-message">
 @if($errors->has('username'))
-{{ $errors->first('username') }}
+<tr>
+  @foreach($errors->get('username') as $message)
+  <td> {{ $message }} </td>
+  @endforeach
+</tr>
+</p>
 @endif
 </div>
-<div class="label-mailadress">
-{{ Form::label('MailAdress') }}
+<div class="label-mailAddress">
+{{ Form::label('MailAddress') }}
 </div>
-<div class="input-mailadress">
+<div class="input-mailAddress">
 {{ Form::text('mail',null,['class' => 'input']) }}
+<p class="error-message">
+@if($errors->has('mail'))
+<tr>
+  @foreach($errors->get('mail') as $message)
+  <td> {{ $message }} </td>
+  @endforeach
+</tr>
+@endif
+</p>
 </div>
 <div class="label-password">
 {{ Form::label('Password') }}
 </div>
 <div class="input-password">
 {{ Form::password('password',null,['class' => 'input']) }}
+<p class="error-message">
+@if($errors->has('password'))
+<tr>
+  @foreach($errors->get('password') as $message)
+  <td> {{ $message }} </td>
+  @endforeach
+</tr>
+@endif
+</p>
 </div>
 <div class="label-password-confirm">
 {{ Form::label('Password confirm') }}
 </div>
 <div class="input-password-confirm">
 {{ Form::password('password-confirm',null,['class' => 'input']) }}
+<p class="error-message">
+@if($errors->has('password-confirm'))
+<tr>
+  @foreach($errors->get('password-confirm') as $message)
+  <td> {{ $message }} </td>
+  @endforeach
+</tr>
+@endif
+</p>
 </div>
 <div class="register-btn">
 {{ Form::submit('REGISTER') }}

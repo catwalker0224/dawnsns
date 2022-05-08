@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use App\Post;
 use App\Follow;
 
@@ -21,9 +22,22 @@ class PostsController extends Controller
         return view('posts.index',['list'=>$list]);
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'posts' => 'required|string|max:150'
+        ]);
+    }
+
     public function tweet(Request $request){
-        $post = $request->input('newPost');
-        Post::insert(['posts'=>$post, 'user_id'=>Auth::id(), 'created_at'=>now()]);
+        $data = $request->input('newPost');
+        $val = $this->validator($data);
+        if ($val->fails()){
+            return redirect('/top')
+            ->withErrors($val)
+            ->withInput();
+        }
+        Post::insert(['posts'=>$data, 'user_id'=>Auth::id(), 'created_at'=>now()]);
         return redirect('/top');
     }
 

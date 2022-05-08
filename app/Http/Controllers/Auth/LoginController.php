@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -39,11 +40,25 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'mail' => 'required',
+            'password' => 'required'
+        ],[
+            'required' => 'この項目は入力必須です',
+        ]);
+    }
+
     public function login(Request $request){
         if($request->isMethod('post')){
             $data=$request->only('mail','password');
-            // ログインが成功したら、トップページへ
-            //↓ログイン条件は公開時には消すこと
+            $val = $this->validator($data);
+            if ($val->fails()){
+                return redirect('/login')
+                ->withErrors($val)
+                ->withInput();
+            }
             if(Auth::attempt($data)){
                 return redirect('/top');
             }

@@ -12,7 +12,7 @@
   padding: 30px 30px 110px 30px;
   margin-top: 30px;
   width: 246px;
-  height: 280px;
+  height: 300px;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 2%;
 }
@@ -30,7 +30,7 @@
   text-align: left;
 }
 
-.label-mailadress,
+.label-mailAddress,
 .label-password,
 .label-password-confirm {
   color: #fff;
@@ -50,6 +50,11 @@
   border-radius: 4px;
 }
 
+.error-message {
+  color: crimson;
+  font-size: 0.7rem;
+}
+
 .register-btn {
   text-align: right;
 }
@@ -63,7 +68,7 @@
 }
 
 .login-link {
-  margin-top: 35px;
+  margin-top: 20px;
 }
 
 .login-link a {

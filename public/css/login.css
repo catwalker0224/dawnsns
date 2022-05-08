@@ -23,7 +23,7 @@
   margin-bottom: 30px;
 }
 
-.label-mailadress {
+.label-mailAddress {
   color: #fff;
   font-size: 0.8rem;
   margin: 0px 0px 7px 12px;
@@ -60,5 +60,10 @@
 
 .register-link a {
   color: #fff;
+  font-size: 0.7rem;
+}
+
+.error-message {
+  color: crimson;
   font-size: 0.7rem;
 }
