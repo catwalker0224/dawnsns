@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use App\Post;
 use App\Follow;
 use Illuminate\Support\Facades\Validator;
 
@@ -109,11 +110,9 @@ class UsersController extends Controller
 
     // others.blade
     // ユーザープロフィール表示用メソッド
-    public function othersProfile(Request $request){
-        $id = $request->input('id');
-
-        $othersProfile = User::where('users.id', $id)
-        ->select('users.username','users.bio', 'users.images')
+    public function othersProfile(Request $request, $id){
+        $othersProfiles = User::where('users.id', $id)
+        ->select('users.id', 'users.username','users.bio', 'users.images')
         ->get();
 
         $othersPosts = Post::join('users', 'posts.user_id', '=', 'users.id')
@@ -122,9 +121,24 @@ class UsersController extends Controller
         ->orderBy('posts.created_at', 'desc')
         ->get();
 
-        return view('users.others', ['othersProfile'=>$othersProfile,'othersPosts'=>$othersPosts]);
+        $followings = Follow::where('follower', Auth::id())
+        ->get()
+        ->toArray();
+
+        return view('users.others', ['othersProfiles'=>$othersProfiles,'othersPosts'=>$othersPosts,'followings'=>$followings]);
     }
 
+    // プロフィールページのフォロー用メソッド
+    public function profileFollow($id){
+        Follow::insert(['follow'=>$id, 'follower'=>Auth::id()]);
+        return back()->withInput();
+    }
+    // プロフィールページのリムーブ用メソッド
+    public function profileRemove($id){
+        Follow::where('follows.follow', ['id'=>$id])
+        ->delete();
+        return back()->withInput();
+    }
 
     public function logout(){
         Auth::logout();

@@ -58,3 +58,5 @@ Route::post('/profile','UsersController@editProfile');
 
 // ユーザープロフィールページ
 Route::get('/profile/{id}','UsersController@othersProfile');
+Route::post('profile/{id}/follow','UsersController@profileFollow');
+Route::post('profile/{id}/remove','UsersController@profileRemove');
