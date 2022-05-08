@@ -22,28 +22,35 @@ class PostsController extends Controller
         return view('posts.index',['list'=>$list]);
     }
 
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'posts' => 'required|string|max:150'
-        ]);
-    }
-
     public function tweet(Request $request){
-        $data = $request->input('newPost');
-        $val = $this->validator($data);
-        if ($val->fails()){
+        $post = $request->input('newPost');
+        $validator = Validator::make($request->all(),[
+            'newPost' => 'required|string|max:150',
+        ]);
+        if($validator->fails()){
             return redirect('/top')
-            ->withErrors($val)
+            ->withErrors($validator)
             ->withInput();
         }
-        Post::insert(['posts'=>$data, 'user_id'=>Auth::id(), 'created_at'=>now()]);
+        Post::insert([
+            'posts'=>$post,
+            'user_id'=>Auth::id(),
+            'created_at'=>now()
+        ]);
         return redirect('/top');
     }
 
     public function update(Request $request){
         $id = $request->input('id');
         $update_post = $request->input('updatePost');
+        $validator = Validator::make($request->all(),[
+            'updatePost' => 'required|string|max:150',
+        ]);
+        if($validator->fails()){
+            return redirect('/top')
+            ->withErrors($validator)
+            ->withInput();
+        }
         Post::where('id', $id)
         ->update(['posts' => $update_post]);
         return redirect('/top');

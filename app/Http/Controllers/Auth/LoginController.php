@@ -45,8 +45,6 @@ class LoginController extends Controller
         return Validator::make($data, [
             'mail' => 'required',
             'password' => 'required'
-        ],[
-            'required' => 'この項目は入力必須です',
         ]);
     }
 
@@ -54,7 +52,7 @@ class LoginController extends Controller
         if($request->isMethod('post')){
             $data=$request->only('mail','password');
             $val = $this->validator($data);
-            if ($val->fails()){
+            if($val->fails()){
                 return redirect('/login')
                 ->withErrors($val)
                 ->withInput();

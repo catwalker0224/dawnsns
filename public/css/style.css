@@ -163,6 +163,15 @@ textarea {
     left: -2px;
 }
 
+.postAlert {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color: crimson;
+    font-size: 0.7rem;
+}
+
+
 /* サイドバー */
 #side-bar {
     position: relative;
@@ -305,6 +314,16 @@ input {
     cursor: pointer;
 }
 
+.update-postAlert {
+    position: absolute;
+    color: crimson;
+    font-size: 0.7rem;
+    text-align: center;
+    right: 250px;
+    top: 320px;
+    z-index: 2;
+}
+
 /* タイムライン */
 table {
     width: 100%;
@@ -343,8 +362,9 @@ td.posts {
     position: absolute;
     display: block;
     left: 100px;
-    top: 55px;
+    top: 60px;
     color: #6C6C6C;
+    word-break: break-word;
 }
 
 td.posted-time {
@@ -637,6 +657,37 @@ input.icon-image {
 
 button.profile-update::before {
     display: none;
+}
+
+.profileAlert {
+    color: crimson;
+    font-size: 0.7rem;
+}
+
+li.username {
+    position: absolute;
+    left: 380px;
+    top: 100px;
+    color: crimson;
+    font-size: 0.7rem;
+}
+
+li.mail {
+    position: absolute;
+    left: 380px;
+    top: 170px;
+}
+
+li.password {
+    position: absolute;
+    left: 380px;
+    top: 310px;
+}
+
+li.bio {
+    position: absolute;
+    left: 380px;
+    top: 420px;
 }
 
 /* ユーザープロフィール */

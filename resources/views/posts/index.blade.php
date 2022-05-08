@@ -9,6 +9,15 @@
     <textarea name="newPost" rows="3" cols="50" required, placeholder='何をつぶやこうか...?'></textarea>
     <button type="submit"><img src="images/post.png" alt="投稿"></button>
   </form>
+  @if ($errors->has('newPost'))
+    <div class="postAlert">
+        <ul>
+            @foreach ($errors->get('newPost') as $message)
+                <li>{{ $message }}</li>
+            @endforeach
+        </ul>
+    </div>
+  @endif
 </div>
 <!-- つぶやきリストのテーブル -->
 <table class="table-container">
@@ -36,6 +45,15 @@
           </form>
         </div>
       </div>
+      @if ($errors->has('updatePost'))
+      <div class="update-postAlert">
+        <ul>
+          @foreach ($errors->get('updatePost') as $message)
+          <li>{{ $message }}</li>
+          @endforeach
+        </ul>
+      </div>
+      @endif
     </div>
     <!-- 投稿削除ボタン -->
     <td class="btn-delete">
