@@ -8,6 +8,7 @@ use App\User;
 use App\Post;
 use App\Follow;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
@@ -50,28 +51,29 @@ class UsersController extends Controller
             'password' => $data['newPassword'],
             'bio' => $data['bio'],
         ]);}
-        else if(isset($data['mailAddress'])){
-            return User::where('id', Auth::id())
-            ->update([
-            'username' => $data['username'],
-            'mail' => $data['mailAddress'],
-            'bio' => $data['bio'],
-        ]);}
-        else return User::where('id', Auth::id())
-        ->update([
-            'username' => $data['username'],
-            'bio' => $data['bio'],
-        ]);
+        // else if(isset($data['mailAddress'])){
+        //     return User::where('id', Auth::id())
+        //     ->update([
+        //     'username' => $data['username'],
+        //     'mail' => $data['mailAddress'],
+        //     'bio' => $data['bio'],
+        // ]);}
+        // else return User::where('id', Auth::id())
+        // ->update([
+        //     'username' => $data['username'],
+        //     'bio' => $data['bio'],
+        // ]);
     }
     // マイプロフィール編集用メソッド②
     public function editProfile(Request $request){
           if($request->isMethod('post')){
             $data = $request->input();
-            $validator = Validator::make($request->all(),[
-            'username' => 'string|min:4|max:12',
-            'mail' => 'string|email|min:4|max:12|unique:users',
-            'password' => 'string|regex:/^[a-zA-Z0-9]+$/|min:4|max:12|unique:users',
-            'bio' => 'string|max:200',
+            $own_mail = Auth::user()->mail;
+            $validator = Validator::make($request->except('_token'), [
+            'username' => ['string', 'min:4', 'max:12',],
+            'mail' => ['string', 'email', 'min:4', 'max:12', Rule::unique('users', 'mail')->ignore($own_mail, 'mail')],
+            'password' => ['string', 'regex:/^[a-zA-Z0-9]+$/', 'min:4', 'max:12', 'unique:users'],
+            'bio' => ['string', 'max:200'],
         ]);
             if($validator->fails()){
                 return redirect('/profile')
@@ -95,7 +97,7 @@ class UsersController extends Controller
                 ]);
             }
             return redirect('/profile');
-    }
+        }
     }
 
     // others.blade

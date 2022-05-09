@@ -19,7 +19,7 @@
   @endif
   <br>
   <label class="mail-address">MailAddress
-    <input type="email" name="mail" placeholder="{{ Auth::user()->mail }}" class="mail-address">
+    <input type="email" name="mail" value="{{ Auth::user()->mail }}" class="mail-address">
   </label>
   @if ($errors->has('mail'))
     <div class="profileAlert">
