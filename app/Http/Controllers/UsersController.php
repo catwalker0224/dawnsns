@@ -42,37 +42,36 @@ class UsersController extends Controller
         return view('users.profile');
     }
     // マイプロフィール編集用メソッド①
-    public function update(array $data){
-        if(isset($data['newPassword'])){
-        return User::where('id', Auth::id())
-        ->update([
-            'username' => $data['username'],
-            'mail' => $data['mailAddress'],
-            'password' => $data['newPassword'],
-            'bio' => $data['bio'],
-        ]);}
-        // else if(isset($data['mailAddress'])){
-        //     return User::where('id', Auth::id())
-        //     ->update([
-        //     'username' => $data['username'],
-        //     'mail' => $data['mailAddress'],
-        //     'bio' => $data['bio'],
-        // ]);}
-        // else return User::where('id', Auth::id())
-        // ->update([
-        //     'username' => $data['username'],
-        //     'bio' => $data['bio'],
-        // ]);
-    }
+    // public function update(array $data){
+    //     if(isset($data['newPassword'])){
+    //     return User::where('id', Auth::id())
+    //     ->update([
+    //         'username' => $data['username'],
+    //         'mail' => $data['mailAddress'],
+    //         'password' => $data['newPassword'],
+    //         'bio' => $data['bio'],
+    //     ]);}
+    //     else if(isset($data['mailAddress'])){
+    //         return User::where('id', Auth::id())
+    //         ->update([
+    //         'username' => $data['username'],
+    //         'mail' => $data['mailAddress'],
+    //         'bio' => $data['bio'],
+    //     ]);}
+    //     else return User::where('id', Auth::id())
+    //     ->update([
+    //         'username' => $data['username'],
+    //         'bio' => $data['bio'],
+    //     ]);
+    // }
     // マイプロフィール編集用メソッド②
     public function editProfile(Request $request){
           if($request->isMethod('post')){
             $data = $request->input();
             $own_mail = Auth::user()->mail;
-            $validator = Validator::make($request->except('_token'), [
+            $validator = Validator::make($request->all(), [
             'username' => ['string', 'min:4', 'max:12',],
             'mail' => ['string', 'email', 'min:4', 'max:12', Rule::unique('users', 'mail')->ignore($own_mail, 'mail')],
-            'password' => ['string', 'regex:/^[a-zA-Z0-9]+$/', 'min:4', 'max:12', 'unique:users'],
             'bio' => ['string', 'max:200'],
         ]);
             if($validator->fails()){
@@ -81,24 +80,38 @@ class UsersController extends Controller
                 ->withInput();
             }
             User::where('id', Auth::id())
-            ->update($data)
-            ->bcrypt('password');
+            ->update([
+            'username' => $data['username'],
+            'mail' => $data['mail'],
+            'bio' => $data['bio'],
+        ]);
 
-            $icon = $request->file('iconImage');
-            if(isset($icon)){
-                $request->validate([
-                    'iconImage' => 'image',
-                ]);
-                $file_name = $icon->getClientOriginalName();
-                $path = $icon->storeAs('public/images',$file_name);
-                User::where('id', Auth::id())
-                ->update([
-                    'images' => $file_name
-                ]);
-            }
-            return redirect('/profile');
+        $password = $request->input('newPassword');
+        if(isset($password)){
+            $request->validate([
+                'newPassword' => 'string|regex:/^[a-zA-Z0-9]+$/|min:4|max:12|unique:users',
+            ]);
+            User::where('id', Auth::id())
+            ->update([
+                'password' => $password
+            ]);
         }
+
+        $icon = $request->file('iconImage');
+        if(isset($icon)){
+            $request->validate([
+                'iconImage' => 'image',
+            ]);
+            $file_name = $icon->getClientOriginalName();
+            $path = $icon->storeAs('public/images',$file_name);
+            User::where('id', Auth::id())
+            ->update([
+                'images' => $file_name
+            ]);
+        }
+        return redirect('/profile');
     }
+}
 
     // others.blade
     // ユーザープロフィール表示用メソッド
