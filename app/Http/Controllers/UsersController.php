@@ -89,11 +89,11 @@ class UsersController extends Controller
         $password = $request->input('newPassword');
         if(isset($password)){
             $request->validate([
-                'newPassword' => 'string|regex:/^[a-zA-Z0-9]+$/|min:4|max:12|unique:users',
+                'password' => 'string|regex:/^[a-zA-Z0-9]+$/|min:4|max:12|unique:users',
             ]);
             User::where('id', Auth::id())
             ->update([
-                'password' => $password
+                'password' => bcrypt($password)
             ]);
         }
 
