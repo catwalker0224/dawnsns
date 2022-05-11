@@ -41,30 +41,7 @@ class UsersController extends Controller
     public function profile(){
         return view('users.profile');
     }
-    // マイプロフィール編集用メソッド①
-    // public function update(array $data){
-    //     if(isset($data['newPassword'])){
-    //     return User::where('id', Auth::id())
-    //     ->update([
-    //         'username' => $data['username'],
-    //         'mail' => $data['mailAddress'],
-    //         'password' => $data['newPassword'],
-    //         'bio' => $data['bio'],
-    //     ]);}
-    //     else if(isset($data['mailAddress'])){
-    //         return User::where('id', Auth::id())
-    //         ->update([
-    //         'username' => $data['username'],
-    //         'mail' => $data['mailAddress'],
-    //         'bio' => $data['bio'],
-    //     ]);}
-    //     else return User::where('id', Auth::id())
-    //     ->update([
-    //         'username' => $data['username'],
-    //         'bio' => $data['bio'],
-    //     ]);
-    // }
-    // マイプロフィール編集用メソッド②
+    // マイプロフィール編集用メソッド
     public function editProfile(Request $request){
           if($request->isMethod('post')){
             $data = $request->input();

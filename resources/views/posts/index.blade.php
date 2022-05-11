@@ -40,7 +40,7 @@
         <div class="inner-content">
           <form action="/post/{{$list->id}}/update" method="post" class="update-area">@csrf
             <input type="hidden" name="id" value="{{$list->id}}">
-            <input type="text" name="updatePost" required, placeholder="{{$list->posts}}">
+            <input type="text" name="updatePost" required, value="{{$list->posts}}">
             <input class="update-btn" type="image" src="images/edit.png" alt="編集ボタン">
           </form>
         </div>
