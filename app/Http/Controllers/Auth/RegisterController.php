@@ -53,14 +53,8 @@ class RegisterController extends Controller
             'mail' => 'required|string|email|min:4|max:12|unique:users',
             'password' => 'required|string|regex:/^[a-zA-Z0-9]+$/|min:4|max:12|unique:users',
             'password-confirm' => 'required|string|regex:/^[a-zA-Z0-9]+$/|min:4|max:12|same:password'
-        ],[
-            // 'required' => 'この項目は入力必須です',
-            // 'min:4' => 'この項目は4文字以上です',
-            // 'max:12' => 'この項目は12文字以内です',
-            // 'unique:users' => 'この項目は登録済み情報使用不可です',
-            // 'regex:/^[a-zA-Z0-9]+$/' => 'この項目は英数字のみです',
-            // 'same:password' => 'Passwordと一致していません'
-        ]);
+        ],
+    );
     }
 
     /**
@@ -77,10 +71,6 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
-
-    // public function registerForm(){
-    //     return view("auth.register");
-    // }
 
     public function register(Request $request){
         if($request->isMethod('post')){
