@@ -29,4 +29,4 @@
   @endforeach
 </table>
 
-@endsection
+@endSection

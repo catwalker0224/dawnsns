@@ -20,7 +20,7 @@ class PostsController extends Controller
             ->orderBy('posts.created_at', 'desc')
             ->get();
             return view('posts.index',['list'=>$list]);
-    }
+        }
 
     public function tweet(Request $request){
         $post = $request->input('newPost');
@@ -38,7 +38,7 @@ class PostsController extends Controller
             'created_at'=>now()
         ]);
             return redirect('/top');
-    }
+        }
 
     public function update(Request $request){
         $id = $request->input('id');
@@ -54,11 +54,19 @@ class PostsController extends Controller
         Post::where('id', $id)
             ->update(['posts' => $update_post]);
             return redirect('/top');
-    }
+        }
 
     public function delete($id){
         Post::where('posts.id', ['id'=>$id])
             ->delete();
             return redirect('/top');
-    }
+        }
+
+// test.blade用メソッド
+    public function test(){
+        $lists = Post::where('user_id', Auth::id())
+            ->select('posts.posts')
+            ->get();
+            return view('posts.test',['lists'=>$lists]);
+        }
 }

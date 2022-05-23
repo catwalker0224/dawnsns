@@ -37,14 +37,13 @@ Route::get('/top','PostsController@index');
 Route::post('post/create','PostsController@tweet');
 Route::post('post/{id}/update','PostsController@update');
 Route::get('post/{id}/delete','PostsController@delete');
-
-Route::get('/logout','UsersController@logout');
+Route::get('/logout','LoginController@logout');
 
 // 検索ページ
 Route::get('/search','UsersController@search');
 Route::post('/search','UsersController@search');
-Route::post('search/{id}/follow','UsersController@follow');
-Route::post('search/{id}/remove','UsersController@remove');
+Route::get('search/{id}/follow','UsersController@follow');
+Route::get('search/{id}/remove','UsersController@remove');
 
 // フォローリスト
 Route::get('/follow-list','FollowsController@followList');
@@ -58,5 +57,8 @@ Route::post('/profile','UsersController@editProfile');
 
 // ユーザープロフィールページ
 Route::get('/profile/{id}','UsersController@othersProfile');
-Route::post('profile/{id}/follow','UsersController@profileFollow');
-Route::post('profile/{id}/remove','UsersController@profileRemove');
+Route::get('profile/{id}/follow','UsersController@profileFollow');
+Route::get('profile/{id}/remove','UsersController@profileRemove');
+
+// test用
+Route::get('/test','PostsController@test');

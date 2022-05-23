@@ -20,8 +20,11 @@ class UsersController extends Controller
         if(isset($keyword)){
             $query->where('username', 'like', '%'.$keyword.'%');
         }
-        $results = $query->select('users.id', 'users.username', 'users.images')->get();
-        $followings = Follow::where('follower', Auth::id())->get()->toArray();
+        $results = $query->select('users.id', 'users.username', 'users.images')
+            ->get();
+        $followings = Follow::where('follower', Auth::id())
+            ->get()
+            ->toArray();
         return view('users.search',['results'=>$results, 'keyword'=>$keyword, 'followings'=>$followings]);
     }
     // フォロー用メソッド
@@ -31,9 +34,9 @@ class UsersController extends Controller
     }
     // リムーブ用メソッド
     public function remove($id){
-        Follow::where('follows.follow', ['id'=>$id])
+        Follow::where('follow', $id)
             ->delete();
-            return redirect('/search');
+        return redirect('/search');
     }
 
     // profile.blade
@@ -104,19 +107,15 @@ class UsersController extends Controller
             ->toArray();
             return view('users.others', ['othersProfiles'=>$othersProfiles,'othersPosts'=>$othersPosts,'followings'=>$followings]);
     }
-
     // プロフィールページのフォロー用メソッド
     public function profileFollow($id){
         Follow::insert(['follow'=>$id, 'follower'=>Auth::id()]);
-        return back()->withInput();
+        return back();
     }
     // プロフィールページのリムーブ用メソッド
     public function profileRemove($id){
-        Follow::where('follows.follow', ['id'=>$id])->delete();
-        return back()->withInput();
-    }
-    public function logout(){
-        Auth::logout();
-        return redirect('/login');
+        Follow::where('follow', $id)
+        ->delete();
+        return back();
     }
 }

@@ -25,18 +25,18 @@
     <td class="found-username">{{ $result->username }}</td>
     <td class="switch-btn">
       @if(in_array($result->id, array_column($followings, 'follow')))
-      <form action="/search/{{$result->id}}/remove" method="post">@csrf
-      <button class=remove-btn type="submit" name="remove">フォローをはずす</button>
-      </form>
+      <a href="/search/{{$result->id}}/remove">
+        <button class=remove-btn type="submit" name="remove">フォローをはずす</button>
+      </a>
       @elseif( $result->id == Auth::user()->id)
       @else
-      <form action="/search/{{$result->id}}/follow" method="post">@csrf
-      <button class=follow-btn type="submit" name="follow">フォローする</button>
-      </form>
+      <a href="/search/{{$result->id}}/follow">
+        <button class=follow-btn type="submit" name="follow">フォローする</button>
+      </a>
       @endif
     </td>
   </tr>
   @endforeach
 </table>
 
-@endsection
+@endSection

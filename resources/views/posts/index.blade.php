@@ -19,7 +19,7 @@
     </div>
   @endif
 </div>
-<!-- つぶやきリストのテーブル -->
+<!-- つぶやき投稿リスト -->
 <table class="table-container">
   @foreach ($list as $list)
   <tr class="posts-table">
@@ -68,4 +68,4 @@
   @endforeach
 </table>
 
-@endsection
+@endSection
