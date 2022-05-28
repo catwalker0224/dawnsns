@@ -40,21 +40,16 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'mail' => 'required',
-            'password' => 'required'
-        ]);
-    }
-
     public function login(Request $request){
         if($request->isMethod('post')){
             $data=$request->only('mail','password');
-            $val = $this->validator($data);
-            if($val->fails()){
+            $validator = Validator::make($data,[
+                'mail' => 'required',
+                'password' => 'required',
+            ]);
+            if($validator->fails()){
                 return redirect('/login')
-                ->withErrors($val)
+                ->withErrors($validator)
                 ->withInput();
             }
             if(Auth::attempt($data)){

@@ -40,49 +40,27 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'username' => 'required|string|min:4|max:12',
-            'mail' => 'required|string|email|min:4|max:12|unique:users',
-            'password' => 'required|string|regex:/^[a-zA-Z0-9]+$/|min:4|max:12|unique:users',
-            'password-confirm' => 'required|string|regex:/^[a-zA-Z0-9]+$/|min:4|max:12|same:password'
-        ],
-    );
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'username' => $data['username'],
-            'mail' => $data['mail'],
-            'password' => bcrypt($data['password']),
-        ]);
-    }
-
     public function register(Request $request){
         if($request->isMethod('post')){
             $data = $request->input();
-            $val = $this->validator($data);
-            if ($val->fails()){
-                return redirect('/register')
-                    ->withErrors($val)
-                    ->withInput();
+            $validator = Validator::make($data, [
+                'username' => 'required|string|min:4|max:12',
+                'mail' => 'required|string|email|min:4|max:12|unique:users',
+                'password' => 'required|string|regex:/^[a-zA-Z0-9]+$/|min:4|max:12|unique:users',
+                'password-confirm' => 'required|string|regex:/^[a-zA-Z0-9]+$/|min:4|max:12|same:password',
+            ]);
+        if($validator->fails()){
+            return redirect('/register')
+                ->withErrors($validator)
+                ->withInput();
             }
-            $this->create($data);
-            return redirect('added')->with('username', $data['username']);
+            User::create([
+                'username' => $data['username'],
+                'mail' => $data['mail'],
+                'password' => bcrypt($data['password']),
+            ]);
+            return redirect('/added')
+                ->with('username', $data['username']);
         }
         return view('auth.register');
     }

@@ -21,7 +21,7 @@
 </div>
 <!-- つぶやき投稿リスト -->
 <table class="table-container">
-  @foreach ($list as $list)
+  @foreach ($lists as $list)
   <tr class="posts-table">
     <td class="posted-userIcon"><img src="/storage/images/{{ $list->images }}" alt="ユーザーアイコン"></td>
     <td class="posted-username">{{ $list->username }}</td>

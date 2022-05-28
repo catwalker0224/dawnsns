@@ -24,12 +24,11 @@ Route::post('/login', 'Auth\LoginController@login');
 
 Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/register', 'Auth\RegisterController@register');
-
 Route::get('/added', 'Auth\RegisterController@added');
 
 //ログイン中のページ
 Route::group(['middleware' => 'auth'], function () {
-  Route::get('/top','LoginController@login');
+  Route::get('/top','Auth\LoginController@login');
 });
 
 // トップページ
@@ -37,7 +36,7 @@ Route::get('/top','PostsController@index');
 Route::post('post/create','PostsController@tweet');
 Route::post('post/{id}/update','PostsController@update');
 Route::get('post/{id}/delete','PostsController@delete');
-Route::get('/logout','LoginController@logout');
+Route::get('/logout','Auth\LoginController@logout');
 
 // 検索ページ
 Route::get('/search','UsersController@search');
@@ -52,7 +51,7 @@ Route::get('/follow-list','FollowsController@followList');
 Route::get('/follower-list','FollowsController@followerList');
 
 // マイプロフィール編集ページ
-Route::get('/profile','UsersController@profile');
+Route::get('/profile','UsersController@editProfile');
 Route::post('/profile','UsersController@editProfile');
 
 // ユーザープロフィールページ

@@ -79,4 +79,5 @@
   <br>
   <button type="submit" class="profile-update">更　新</button>
 </form>
-@endsection
+
+@endSection

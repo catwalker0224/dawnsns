@@ -11,7 +11,7 @@ use App\Follow;
 class PostsController extends Controller
 {
     public function index(){
-        $list = Post::join('users', 'posts.user_id', '=', 'users.id')
+        $lists = Post::join('users', 'posts.user_id', '=', 'users.id')
             ->leftJoin('follows', 'posts.user_id', '=', 'follows.follow')
             ->groupBy('posts.id')
             ->where('users.id', Auth::id())
@@ -19,7 +19,7 @@ class PostsController extends Controller
             ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
             ->orderBy('posts.created_at', 'desc')
             ->get();
-            return view('posts.index',['list'=>$list]);
+            return view('posts.index',['lists'=>$lists]);
         }
 
     public function tweet(Request $request){
@@ -32,9 +32,9 @@ class PostsController extends Controller
             ->withErrors($validator)
             ->withInput();
         }
-        Post::insert([
-            'posts'=>$post,
+        Post::create([
             'user_id'=>Auth::id(),
+            'posts'=>$post,
             'created_at'=>now()
         ]);
             return redirect('/top');
@@ -52,7 +52,10 @@ class PostsController extends Controller
             ->withInput();
         }
         Post::where('id', $id)
-            ->update(['posts' => $update_post]);
+            ->update([
+            'posts' => $update_post,
+            'updated_at' => now()
+        ]);
             return redirect('/top');
         }
 
