@@ -60,7 +60,7 @@ class PostsController extends Controller
         }
 
     public function delete($id){
-        Post::where('posts.id', ['id'=>$id])
+        Post::where('id', $id)
             ->delete();
             return redirect('/top');
         }

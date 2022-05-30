@@ -25,7 +25,11 @@ class UsersController extends Controller
         $followings = Follow::where('follower', Auth::id())
             ->get()
             ->toArray();
-        return view('users.search',['results'=>$results, 'keyword'=>$keyword, 'followings'=>$followings]);
+        return view('users.search',[
+            'results' => $results,
+            'keyword' => $keyword,
+            'followings' => $followings
+        ]);
     }
     // フォロー用メソッド
     public function follow($id){
